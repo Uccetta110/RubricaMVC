@@ -29,10 +29,12 @@ USE `telefono`;
 -- Struttura della tabella `rubrica`
 --
 
-CREATE TABLE `rubrica` (
-  `id` int(11) NOT NULL,
-  `nome` text NOT NULL,
-  `numero` bigint(20) NOT NULL
+CREATE TABLE IF NOT EXISTS `rubrica` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) NOT NULL,
+  `numero` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `numero` (`numero`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -40,12 +42,12 @@ CREATE TABLE `rubrica` (
 --
 
 INSERT INTO `rubrica` (`id`, `nome`, `numero`) VALUES
-(1, 'Davy D. Xebec ', 3243544354),
-(2, 'Demo Nico', 6767676767),
-(3, 'Binardo', 2322342324),
-(4, 'Persona 2', 3453453453),
-(5, 'Marco Vasalli', 1100011),
-(6, 'Inserena Lavatroni', 1234567890);
+(1, 'Davy D. Xebec', '333-1234567'),
+(2, 'Demo Nico', '333-7654321'),
+(3, 'Binardo', '2322342324'),
+(4, 'Persona 2', '3453453453'),
+(5, 'Marco Vasalli', '1100011'),
+(6, 'Inserena Lavatroni', '1234567890');
 
 --
 -- Indici per le tabelle scaricate
@@ -54,8 +56,33 @@ INSERT INTO `rubrica` (`id`, `nome`, `numero`) VALUES
 --
 -- Indici per le tabelle `rubrica`
 --
-ALTER TABLE `rubrica`
-  ADD UNIQUE KEY `id` (`id`);
+
+-- Tabella per gli SMS
+CREATE TABLE IF NOT EXISTS `sms` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mittente` varchar(20) NOT NULL,
+  `destinatario` varchar(20) NOT NULL,
+  `messaggio` text NOT NULL,
+  `data_invio` datetime NOT NULL,
+  `letto` tinyint(1) DEFAULT 0,
+  PRIMARY KEY (`id`),
+  KEY `idx_destinatario` (`destinatario`),
+  KEY `idx_mittente` (`mittente`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Tabella per tracciare lo stato "sta scrivendo"
+CREATE TABLE IF NOT EXISTS `typing_status` (
+  `numero` varchar(20) NOT NULL,
+  `destinatario` varchar(20) NOT NULL,
+  `ultimo_aggiornamento` datetime NOT NULL,
+  PRIMARY KEY (`numero`, `destinatario`),
+  KEY `idx_destinatario` (`destinatario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- SMS di esempio
+INSERT INTO `sms` (`mittente`, `destinatario`, `messaggio`, `data_invio`, `letto`) VALUES
+('333-1234567', '333-7654321', 'Ciao! Come stai?', NOW(), 0),
+('333-7654321', '333-1234567', 'Tutto bene, grazie! E tu?', NOW(), 1);
 
 --
 -- AUTO_INCREMENT per le tabelle scaricate
