@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Script per avviare il server PHP per RubricaMVC
+
+echo "🚀 Avvio server PHP per RubricaMVC..."
+echo "📍 Indirizzo: http://localhost:8000"
+echo "⏹  Premi Ctrl+C per fermare il server"
+echo ""
+
+cd "$(dirname "$0")/public"
+export PATH="/usr/local/php/8.3.14/bin:$PATH"
+php -S localhost:8000

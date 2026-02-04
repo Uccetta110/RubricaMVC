@@ -106,7 +106,7 @@ class HomeController extends Controller {
                 if ($contatto) {
                     $_SESSION['mio_numero'] = $numero;
                     $_SESSION['mio_nome'] = $contatto['nome'];
-                    $this->redirect('/public/index.php');
+                    $this->redirect('/');
                 } else {
                     $this->view('login', ['error' => 'Numero non trovato in rubrica']);
                     return;
@@ -120,6 +120,6 @@ class HomeController extends Controller {
     public function logout() {
         unset($_SESSION['mio_numero']);
         unset($_SESSION['mio_nome']);
-        $this->redirect('/public/index.php');
+        $this->redirect('/');
     }
 }

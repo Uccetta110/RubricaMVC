@@ -7,18 +7,24 @@ class Database {
     private function __construct() {
         $config = require __DIR__ . '/../config/config.php';
         
-        $this->connection = new mysqli(
-            $config['db_host'],
-            $config['db_user'],
-            $config['db_pass'],
-            $config['db_name']
-        );
-        
-        if ($this->connection->connect_error) {
-            die("Connessione fallita: " . $this->connection->connect_error);
+        try {
+            if ($config['db_type'] === 'sqlite') {
+                $dsn = "sqlite:{$config['db_path']}";
+                $this->connection = new PDO($dsn, null, null, [
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                ]);
+            } else {
+                $dsn = "mysql:host={$config['db_host']};dbname={$config['db_name']};charset=utf8mb4";
+                $this->connection = new PDO($dsn, $config['db_user'], $config['db_pass'], [
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                    PDO::ATTR_EMULATE_PREPARES => false,
+                ]);
+            }
+        } catch (PDOException $e) {
+            die("Connessione fallita: " . $e->getMessage());
         }
-        
-        $this->connection->set_charset("utf8mb4");
     }
     
     public static function getInstance() {
@@ -41,6 +47,6 @@ class Database {
     }
     
     public function escape($string) {
-        return $this->connection->real_escape_string($string);
+        return $this->connection->quote($string);
     }
 }
