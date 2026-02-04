@@ -8,23 +8,15 @@ class Database {
         $config = require __DIR__ . '/../config/config.php';
         
         try {
-            if ($config['db_type'] === 'sqlite') {
-                $dsn = "sqlite:{$config['db_path']}";
-                $this->connection = new PDO($dsn, null, null, [
-                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                ]);
-            } else {
-                $dsn = "mysql:host={$config['db_host']};dbname={$config['db_name']};charset=utf8mb4";
-                if (isset($config['db_socket'])) {
-                    $dsn = "mysql:unix_socket={$config['db_socket']};dbname={$config['db_name']};charset=utf8mb4";
-                }
-                $this->connection = new PDO($dsn, $config['db_user'], $config['db_pass'], [
-                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                    PDO::ATTR_EMULATE_PREPARES => false,
-                ]);
+            $dsn = "mysql:host={$config['db_host']};dbname={$config['db_name']};charset=utf8mb4";
+            if (isset($config['db_socket'])) {
+                $dsn = "mysql:unix_socket={$config['db_socket']};dbname={$config['db_name']};charset=utf8mb4";
             }
+            $this->connection = new PDO($dsn, $config['db_user'], $config['db_pass'], [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES => false,
+            ]);
         } catch (PDOException $e) {
             die("Connessione fallita: " . $e->getMessage());
         }

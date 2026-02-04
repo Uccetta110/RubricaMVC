@@ -66,11 +66,7 @@
             margin-bottom: 25px;
         }
 
-        .radio-group input[type="radio"] {
-            display: none;
-        }
-
-        .radio-group label {
+        /*.radio-group label {
             padding: 20px;
             font-size: 18px;
             font-weight: 600;
@@ -84,19 +80,21 @@
             align-items: center;
             justify-content: center;
             min-height: 80px;
-        }
+            /*background: linear-gradient(135deg, #06beb6 0%, #48b1bf 100%);
+        }*/
 
         .radio-group label:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
-
-        .radio-group input[type="radio"]:checked + label {
-            background: linear-gradient(135deg, #06beb6 0%, #48b1bf 100%);
+/*
+        .radio-group button {
+            
             color: white;
-            border-color: #06beb6;
+           /* border-color: #06beb6;
             box-shadow: 0 5px 20px rgba(6, 190, 182, 0.4);
-        }
+            border: none;
+        }*/
 
         .submit-btn {
             width: 100%;
@@ -312,7 +310,7 @@
 
         .action-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 15px;
             margin-bottom: 20px;
         }
@@ -329,6 +327,9 @@
             gap: 10px;
             transition: all 0.3s;
             position: relative;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
         }
 
         .action-card:hover {

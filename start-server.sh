@@ -8,5 +8,4 @@ echo "⏹  Premi Ctrl+C per fermare il server"
 echo ""
 
 cd "$(dirname "$0")/public"
-export PATH="/usr/local/php/8.3.14/bin:$PATH"
-php -S localhost:8000
+php8.3 -S localhost:8000

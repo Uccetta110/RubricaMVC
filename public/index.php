@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Carica il framework MVC
+// Prende i file
 require_once __DIR__ . '/../core/Database.php';
 require_once __DIR__ . '/../core/Controller.php';
 require_once __DIR__ . '/../core/Router.php';
@@ -9,7 +9,7 @@ require_once __DIR__ . '/../core/Router.php';
 require_once __DIR__ . '/../app/controllers/HomeController.php';
 require_once __DIR__ . '/../app/controllers/SmsController.php';
 
-// Inizializza il database
+// starta database
 Database::getInstance();
 
 // Gestione semplificata tramite GET/POST action

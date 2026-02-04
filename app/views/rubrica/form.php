@@ -2,20 +2,30 @@
 
 <?php if (!$showForm): ?>
     <form method="POST" action="?action=rubrica">
-        <div class="radio-group">
-            <input type="radio" id="aggiungi" name="azione" value="add" required>
-            <label for="aggiungi">✨ Aggiungi</label>
+        <div class="action-grid" >
+            <button class="action-card" type="submit" name="azione" value="add">
+                <span class="icon">✨</span>
+                <span class="label">Aggiungi</span>
+            </button>
 
-            <input type="radio" id="visualizza" name="azione" value="show">
-            <label for="visualizza">📋 Visualizza</label>
+            <button class="action-card" type="submit" name="azione" value="show">
+                <span class="icon">📋</span>
+                <span class="label">Visualizza</span>
+            </button>
 
-            <input type="radio" id="modifica" name="azione" value="mod">
-            <label for="modifica">🔧 Modifica</label>
+            <button class="action-card" type="submit" name="azione" value="mod">
+                <span class="icon">🔧</span>
+                <span class="label">Modifica</span>
+            </button>
 
-            <input type="radio" id="elimina" name="azione" value="del">
-            <label for="elimina">❌ Elimina</label>
+            <button class="action-card" type="submit" name="azione" value="del">
+                <span class="icon">❌</span>
+                <span class="label">Elimina</span>
+            </button>
         </div>
-        <button type="submit" class="submit-btn">Continua →</button>
+        <div style="margin-top: 20px; text-align: center;">
+            <a href="?" class="text-link">← Torna alla home</a>
+        </div>
     </form>
 <?php else: ?>
     <div class="data-form">

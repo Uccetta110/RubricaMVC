@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/style/css/style.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="place-items: center;">
         <div class="header">
             <h1>☎️ Rubrica Telefonica</h1>
             <p>Gestisci i tuoi contatti e messaggi</p>
@@ -19,7 +19,7 @@
             <?php endif; ?>
         </div>
 
-        <div class="main-card">
+        <div class="main-card" style="max-width: 500px;">
             <?= $content ?>
         </div>
     </div>
