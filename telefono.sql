@@ -42,8 +42,8 @@ CREATE TABLE IF NOT EXISTS `rubrica` (
 --
 
 INSERT INTO `rubrica` (`id`, `nome`, `numero`) VALUES
-(1, 'Davy D. Xebec', '333-1234567'),
-(2, 'Demo Nico', '333-7654321'),
+(1, 'Davy D. Xebec', '3331234567'),
+(2, 'Demo Nico', '3337654321'),
 (3, 'Binardo', '2322342324'),
 (4, 'Persona 2', '3453453453'),
 (5, 'Marco Vasalli', '1100011'),
@@ -81,8 +81,8 @@ CREATE TABLE IF NOT EXISTS `typing_status` (
 
 -- SMS di esempio
 INSERT INTO `sms` (`mittente`, `destinatario`, `messaggio`, `data_invio`, `letto`) VALUES
-('333-1234567', '333-7654321', 'Ciao! Come stai?', NOW(), 0),
-('333-7654321', '333-1234567', 'Tutto bene, grazie! E tu?', NOW(), 1);
+('3331234567', '3337654321', 'Ciao! Come stai?', NOW(), 0),
+('3337654321', '3331234567', 'Tutto bene, grazie! E tu?', NOW(), 1);
 
 --
 -- AUTO_INCREMENT per le tabelle scaricate

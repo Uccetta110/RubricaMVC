@@ -8,7 +8,7 @@
                 <div class="contact-item">
                     <span class="contact-id">#<?= $contatto['id'] ?></span>
                     <span class="contact-name"><?= htmlspecialchars($contatto['nome']) ?></span>
-                    <span class="contact-number"><?= htmlspecialchars($contatto['numero']) ?></span>
+                    <span class="contact-number"><?= htmlspecialchars(substr_replace($contatto['numero'], " ", 3, 0)) ?></span>
                 </div>
             <?php endforeach; ?>
         </div>
