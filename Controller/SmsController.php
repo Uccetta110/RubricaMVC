@@ -60,7 +60,7 @@ function smsSend() {
         
         if (!empty($destinatario) && !empty($messaggio)) {
             try {
-                $stmt = $db->prepare("INSERT INTO sms (mittente, destinatario, messaggio, data_invio, letto) VALUES (?, ?, ?, datetime('now'), 0)");
+                $stmt = $db->prepare("INSERT INTO sms (mittente, destinatario, messaggio, data_invio, letto) VALUES (?, ?, ?, NOW(), 0)");
                 $stmt->execute([$mioNumero, $destinatario, $messaggio]);
                 
                 renderView('sms_sent', [
