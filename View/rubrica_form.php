@@ -113,5 +113,5 @@
 <?php 
 $content = ob_get_clean();
 $title = 'Rubrica';
-include __DIR__ . '/../layout.php';
+include __DIR__ . '/layout.php';
 ?>

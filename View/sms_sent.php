@@ -38,5 +38,5 @@
 <?php 
 $content = ob_get_clean();
 $title = 'Messaggio Inviato';
-include __DIR__ . '/../layout.php';
+include __DIR__ . '/layout.php';
 ?>

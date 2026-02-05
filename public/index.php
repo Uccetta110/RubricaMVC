@@ -1,62 +1,46 @@
 <?php
 session_start();
 
-// Prende i file
-require_once __DIR__ . '/../core/Database.php';
-require_once __DIR__ . '/../core/Controller.php';
-require_once __DIR__ . '/../core/Router.php';
+// Connessione database
+require_once __DIR__ . '/../Model/db.php';
 
-require_once __DIR__ . '/../app/controllers/HomeController.php';
-require_once __DIR__ . '/../app/controllers/SmsController.php';
+// Controllers
+require_once __DIR__ . '/../Controller/HomeController.php';
+require_once __DIR__ . '/../Controller/SmsController.php';
 
-// starta database
-Database::getInstance();
-
-// Gestione semplificata tramite GET/POST action
+// Routing
 $action = $_GET['action'] ?? $_POST['action'] ?? 'home';
-
-// Routing semplificato
-$homeController = new HomeController();
-$smsController = new SmsController();
 
 switch ($action) {
     case 'home':
-        $homeController->index();
+        homeIndex();
         break;
     
     case 'login':
-        $homeController->login();
+        homeLogin();
         break;
     
     case 'logout':
-        $homeController->logout();
+        homeLogout();
         break;
     
     case 'rubrica':
-        $homeController->rubrica();
+        homeRubrica();
         break;
     
     case 'sms_inbox':
-        $smsController->inbox();
+        smsInbox();
         break;
     
     case 'sms_compose':
-        $smsController->compose();
+        smsCompose();
         break;
     
     case 'sms_send':
-        $smsController->send();
-        break;
-    
-    case 'sms_typing':
-        $smsController->setTyping();
-        break;
-    
-    case 'sms_check_typing':
-        $smsController->checkTyping();
+        smsSend();
         break;
     
     default:
-        $homeController->index();
+        homeIndex();
         break;
 }
