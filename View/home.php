@@ -29,11 +29,7 @@
     </div>
 </div>
 
-<?php if ($mioNumero): ?>
-    <div style="text-align: center; margin-top: 20px; color: #666;">
-        <small>Connesso come: <strong><?= htmlspecialchars($_SESSION['mio_nome'] ?? $_SESSION['mio_numero']) ?></strong></small>
-    </div>
-<?php endif; ?>
+
 
 <?php 
 $content = ob_get_clean();

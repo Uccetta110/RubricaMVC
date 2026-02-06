@@ -469,16 +469,100 @@
             box-shadow: 0 4px 12px rgba(6, 190, 182, 0.4);
         }
 
+        .sms-compose {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: slideIn 0.4s ease;
+        }
+
+        .sms-compose h2 {
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 1.6em;
+            text-align: center;
+        }
+
+        .sms-compose .form-group {
+            margin-bottom: 20px;
+        }
+
+        .sms-compose .form-group label {
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .sms-compose select,
+        .sms-compose textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .sms-compose select:focus,
+        .sms-compose textarea:focus {
+            outline: none;
+            border-color: #06beb6;
+            box-shadow: 0 0 0 3px rgba(6, 190, 182, 0.1);
+        }
+
         .sms-compose textarea {
             resize: vertical;
-            min-height: 120px;
+            min-height: 140px;
+            line-height: 1.5;
         }
 
         .char-counter {
             display: block;
             text-align: right;
             color: #999;
-            margin-top: 5px;
+            margin-top: 8px;
+            font-size: 0.95em;
+        }
+
+        .sms-compose .form-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+            justify-content: space-between;
+        }
+
+        .sms-compose .btn-execute {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sms-compose .btn-execute.primary {
+            background: linear-gradient(135deg, #06beb6 0%, #48b1bf 100%);
+            color: white;
+        }
+
+        .sms-compose .btn-execute.secondary {
+            background: #f0f0f0;
+            color: #333;
+            border: 2px solid #ddd;
+        }
+
+        .sms-compose .btn-execute:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .sms-compose .btn-execute.secondary:hover {
+            background: #e8e8e8;
         }
 
         .typing-indicator {
